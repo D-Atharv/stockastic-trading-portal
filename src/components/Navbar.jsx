@@ -7,7 +7,7 @@ const Navbar = () => {
         className="h-[60px] w-[70px]"
         src='./stockastic_logo.svg' />
       <h1 className="font-montaga text-white text-extrabold text-3xl">STOCKASTIC</h1>
-        <a href="">
+        <a href="/portfolio">
           <button class="font-montaga bg-purple-700 text-white py-2 px-5 rounded-full  h-[40px]">
             MY PORTFOLIO
           </button>
