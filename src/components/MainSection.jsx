@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react'
 import Stock from './Stock'
 import axios from 'axios'
 
+import { useNavigate } from 'react-router'
+
 import Loader from './Loader'
 
 const MainSection = () => {
+
+  const navigate = useNavigate()
+
   const [companies, setCompanies] = useState([])
 
   const [walletBal, setWalletBal] = useState(0)
@@ -15,7 +20,7 @@ const MainSection = () => {
 
   useEffect(() => {
     if (jwt === null) {
-      window.location = '/SignIn'
+      navigate('/SignIn')
     }
     async function getStocks() {
       await axios
