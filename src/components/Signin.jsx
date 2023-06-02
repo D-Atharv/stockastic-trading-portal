@@ -64,15 +64,15 @@ function SignIn() {
                   localStorage.setItem("jwt", e.data.token);
                   localStorage.setItem("name", e.data.data.name);
                   setTimeout(() => {
-                    navigate("/teamdashboard");
-                  }, 2000);
+                    navigate("/");
+                  }, 1000);
                 }
               })
               .catch((e) => {
                 console.log(e);
                 if (e.data.message === "Please verify your email first") {
                   localStorage.setItem("email", values.email);
-                  navigate("/verifyuser");
+                  showSnackbar("You are not verified. Please verify your email.", 8000)
                 } else {
                   setSuccessSnack(false);
                   showSnackbar(e.data.message, 1500);

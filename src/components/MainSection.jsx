@@ -11,7 +11,12 @@ const MainSection = () => {
 
   const [isLoading, setIsLoading] = useState(true)
 
+  const jwt = localStorage.getItem('jwt')
+
   useEffect(() => {
+    if (jwt === null) {
+      window.location = '/SignIn'
+    }
     async function getStocks() {
       await axios
         .get(
@@ -73,7 +78,6 @@ const MainSection = () => {
       {isLoading ? (
         <div class='h-full w-full flex justify-center items-center p-12'>
           <Loader />
-
           <div
             id='snackbar'
             className={
