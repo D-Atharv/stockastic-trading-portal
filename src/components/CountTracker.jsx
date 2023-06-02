@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-
 const CounterButton = (props) => {
   const decreaseCount = () => {
     if (props.currentQuantity > 0) {
@@ -8,13 +6,16 @@ const CounterButton = (props) => {
   }
 
   const increaseCount = () => {
-    if (props.currentQuantity < props.volumeAvailable) {
+    if (props.currentQuantity < props.volume) {
       props.setCurrentQuantity(props.currentQuantity + 1)
     }
   }
 
   const handleInputChange = (e) => {
     const newCount = parseInt(e.target.value)
+    if (newCount > props.volume) {
+      newCount = props.volume
+    }
     props.setCurrentQuantity(isNaN(newCount) ? 0 : newCount)
   }
 
@@ -34,7 +35,7 @@ const CounterButton = (props) => {
       />
       <button
         className='bg-purple-700 text-white py-1 px-3 rounded-r'
-        onClick={() => increaseCount}
+        onClick={increaseCount}
       >
         +
       </button>

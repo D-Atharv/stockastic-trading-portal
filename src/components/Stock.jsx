@@ -89,7 +89,7 @@ const Stock = (props) => {
             <CountTracker
               currentQuantity={currentQuantity}
               setCurrentQuantity={setCurrentQuantity}
-              volumeAvailable={props.company.volume}
+              volume={props.company.volume}
             />
           </div>
           <div>
