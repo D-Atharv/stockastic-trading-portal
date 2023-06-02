@@ -7,6 +7,12 @@ const CounterButton = (props) => {
     }
   }
 
+  const increaseCount = () => {
+    if (props.currentQuantity < props.volumeAvailable) {
+      props.setCurrentQuantity(props.currentQuantity + 1)
+    }
+  }
+
   const handleInputChange = (e) => {
     const newCount = parseInt(e.target.value)
     props.setCurrentQuantity(isNaN(newCount) ? 0 : newCount)
@@ -28,7 +34,7 @@ const CounterButton = (props) => {
       />
       <button
         className='bg-purple-700 text-white py-1 px-3 rounded-r'
-        onClick={() => props.setCurrentQuantity(props.currentQuantity + 1)}
+        onClick={() => increaseCount}
       >
         +
       </button>

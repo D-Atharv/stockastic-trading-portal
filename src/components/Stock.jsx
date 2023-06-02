@@ -71,8 +71,8 @@ const Stock = (props) => {
 
   return (
     <div>
-      <div className='flex flex-row items-center justify-around bg-[#303030] rounded-3xl text-white font-montaga py-3 my-3'>
-        <div class='grid grid-cols-5'>
+      <div className='flex flex-row items-center justify-center bg-[#303030] rounded-3xl text-white font-montaga py-3 my-3'>
+        <div class='grid grid-cols-5 justify-around'>
           <div>
             <div className='flex flex-row items-center justify-center min-w-[10vw]'>
               <img className='h-[40px] w-[50px]' src='./stockastic_logo.svg' />
@@ -89,6 +89,7 @@ const Stock = (props) => {
             <CountTracker
               currentQuantity={currentQuantity}
               setCurrentQuantity={setCurrentQuantity}
+              volumeAvailable={props.company.volume}
             />
           </div>
           <div>

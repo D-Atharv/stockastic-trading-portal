@@ -86,7 +86,7 @@ const MainSection = () => {
 
   return (
     <div className='mx-10 rounded-3xl my-10 h-full'>
-      <div className='flex flex-row items-center justify-around py-3 font-montaga text-white text-extrabold text-md px-[7%]'>
+      <div className='flex flex-row items-center justify-between py-3 font-montaga text-white text-extrabold text-md px-[7%]'>
         <h1 className='flex-1'>STOCK NAME</h1>
         <h1 className='flex-1'>VOLUME AVAILABLE</h1>
         <h1 className='flex-1'>PRICE</h1>
@@ -110,7 +110,7 @@ const MainSection = () => {
           >
             Snackbar message here.
           </div>
-          <div className='bg-[#FE45RG] px-5 py-5'>
+          <div className='bg-[#FE45RG] px-5 py-5 flex flex-col justify-between'>
             {companies.map((company, index) => (
               <Stock key={index} company={company} showSnackbar={showSnackbar}/>
             ))}
