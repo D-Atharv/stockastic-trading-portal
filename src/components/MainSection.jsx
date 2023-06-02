@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router'
 import Loader from './Loader'
 
 const MainSection = () => {
-
   const navigate = useNavigate()
 
   const [companies, setCompanies] = useState([])
@@ -18,10 +17,24 @@ const MainSection = () => {
 
   const jwt = localStorage.getItem('jwt')
 
+  const showSnackbar = (message, duration) => {
+    var snackbar = document.getElementById('snackbar')
+    snackbar.innerHTML = message
+    snackbar.classList.add('visible')
+    snackbar.classList.remove('invisible')
+    setTimeout(function () {
+      snackbar.classList.remove('visible')
+      snackbar.classList.add('invisible')
+    }, duration)
+  }
+
   useEffect(() => {
-    if (jwt === null) {
-      navigate('/SignIn')
+    function checkLogin() {
+      if (jwt === null) {
+        navigate('/SignIn')
+      }
     }
+
     async function getStocks() {
       await axios
         .get(
@@ -64,8 +77,10 @@ const MainSection = () => {
         .catch((e) => {})
     }
 
+    checkLogin()
     getWallet()
     getStocks()
+
     return
   }, [])
 
@@ -81,8 +96,11 @@ const MainSection = () => {
         </h1>
       </div>
       {isLoading ? (
-        <div class='h-full w-full flex justify-center items-center p-12'>
+        <div className='h-full w-full flex justify-center items-center p-12'>
           <Loader />
+        </div>
+      ) : (
+        <>
           <div
             id='snackbar'
             className={
@@ -92,12 +110,9 @@ const MainSection = () => {
           >
             Snackbar message here.
           </div>
-        </div>
-      ) : (
-        <>
           <div className='bg-[#FE45RG] px-5 py-5'>
             {companies.map((company, index) => (
-              <Stock key={index} company={company} />
+              <Stock key={index} company={company} showSnackbar={showSnackbar}/>
             ))}
           </div>
         </>
