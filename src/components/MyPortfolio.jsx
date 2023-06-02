@@ -46,7 +46,9 @@ const MyPortfolio = () => {
           </div>
 
           {myStocks.map((stock, index) => {
-            return <MyStocks key={index} stock={stock} />
+            if (stock.totalVolume > 0) {
+              return <MyStocks key={index} stock={stock} />
+            }
           })}
         </div>
 
