@@ -5,26 +5,29 @@ import axios from 'axios'
 const MainSection = () => {
   const [companies, setCompanies] = useState([])
 
-  useEffect(async () => {
-    await axios
-      .get(
-        `${import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL}/stockastic/company`,
-        {
-          headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('jwt'),
-          },
-        }
-      )
-      .then((e) => {
-        const status = e.data.status
-        if (status === 'fail') {
-          alert(e.data.err)
-        } else {
-          setCompanies(e.data.companies)
-        }
-        return
-      })
-      .catch((e) => {})
+  useEffect(() => {
+    async function getStocks() {
+      await axios
+        .get(
+          `${import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL}/stockastic/company`,
+          {
+            headers: {
+              Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+            },
+          }
+        )
+        .then((e) => {
+          const status = e.data.status
+          if (status === 'fail') {
+            alert(e.data.err)
+          } else {
+            setCompanies(e.data.companies)
+          }
+          return
+        })
+        .catch((e) => {})
+    }
+    getStocks()
     return
   }, [])
 
@@ -40,8 +43,8 @@ const MainSection = () => {
         </h1>
       </div>
       <div className='bg-[#FE45RG] px-5 py-5'>
-        {companies.map((company) => (
-          <Stock company={company} />
+        {companies.map((company, index) => (
+          <Stock key={index} company={company} />
         ))}
       </div>
     </div>
