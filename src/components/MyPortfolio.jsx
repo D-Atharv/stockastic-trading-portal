@@ -72,6 +72,7 @@ const MyPortfolio = () => {
 
         <div className='h-full mx-10 rounded-3xl my-10 w-[40%] '>
           <MyTeam />
+        
         </div>
       </div>
     </>
