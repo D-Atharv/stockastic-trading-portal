@@ -31,6 +31,7 @@ const Stock = (props) => {
           `You bought ${currentQuantity} stock(s) of ${props.company.name}`,
           5000
         ) // Kevin Jacob.
+        setCurrentQuantity(0)
         props.updateCounter()
       })
       .catch((error) => {
