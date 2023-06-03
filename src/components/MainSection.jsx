@@ -26,7 +26,7 @@ const MainSection = () => {
     snackbar.innerHTML = message
     snackbar.classList.add('visible')
     snackbar.classList.remove('invisible')
-    setTimeout(function () {
+    setTimeout(function() {
       snackbar.classList.remove('visible')
       snackbar.classList.add('invisible')
     }, duration)
@@ -46,9 +46,11 @@ const MainSection = () => {
           },
         })
         .then((e) => {
+          console.log(e)
           return
         })
         .catch((e) => {
+          console.log(e)
           alert('There was some error logging in. Please login again.')
           localStorage.removeItem('jwt')
           navigate('/SignIn')
@@ -78,7 +80,10 @@ const MainSection = () => {
           }
           return
         })
-        .catch((e) => {})
+        .catch((e) => {
+
+          console.log(e)
+        })
     }
 
     async function getWallet() {

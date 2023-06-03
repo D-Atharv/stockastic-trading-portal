@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import CountTracker from './CountTracker'
 
@@ -46,7 +46,7 @@ const MyStocks = (props) => {
         sellBtn.disabled = false
       })
       .catch((error) => {
-        // Handle the error
+        props.showSnackbar(error.response.data.message, 5000)
       })
   }
 

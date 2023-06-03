@@ -40,7 +40,10 @@ const MyPortfolio = () => {
           }
           return
         })
-        .catch((e) => {})
+        .catch((e) => {
+
+        console.log(e)
+      })
     }
     getMyStocks()
     return

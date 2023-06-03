@@ -30,7 +30,9 @@ const TransactionHistory = () => {
           }
           return
         })
-        .catch((e) => {})
+        .catch((e) => {
+        console.log(e)
+      })
     }
     getAllTransacrtions()
   }, [])
