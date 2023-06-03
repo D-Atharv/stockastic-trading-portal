@@ -145,7 +145,7 @@ const MainSection = () => {
                 key={index}
                 company={company}
                 showSnackbar={showSnackbar}
-                // updateCounter={updateCounter}
+                updateCounter={updateCounter}
               />
             ))}
           </div>
