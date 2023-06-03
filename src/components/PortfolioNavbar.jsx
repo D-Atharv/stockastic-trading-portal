@@ -6,7 +6,7 @@ const PortfolioNavbar = () => {
 
   return (
     <div className='flex flex-row items-center justify-between px-[2%] py-3'>
-      <button onClick={() => useNavigate("/")}>
+      <button onClick={() => navigate("/")}>
         <img className='w-[90px]' src='./back_1.svg' />
       </button>
       <h1 className='font-montaga text-white text-extrabold text-3xl'>
