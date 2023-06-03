@@ -91,7 +91,7 @@ function SignIn() {
           }) => (
             <div className='login flex items-center justify-center md:w-[60vw] w-[90vw] h-[100%]'>
               <div className='form w-full text-center'>
-                <button className='flex w-fit' onClick={() => navigate("/")}>
+                <button className='flex w-fit' onClick={() => navigate('/')}>
                   <img className='w-12' src='stockastic_logo.svg' alt='Logo' />
                   <div className='my-auto text-[#5FBDC8]'>Stockastic</div>
                 </button>

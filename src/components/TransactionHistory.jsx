@@ -84,7 +84,7 @@ const TransactionHistory = () => {
                         </span>{' '}
                         each. The total price was{' '}
                         <span className='text-[#B6EADA]'>
-                        {company_transactions.totalPrice.toFixed(2)}
+                          {company_transactions.totalPrice.toFixed(2)}
                         </span>
                       </p>
                     </li>

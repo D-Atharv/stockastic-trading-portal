@@ -89,7 +89,7 @@ const MyPortfolio = () => {
               {myStocks.map((stock, index) => {
                 if (stock.totalVolume > 0) {
                   totalAmount += stock.totalVolume * stock.company.price
-                    console.log(stock)
+                  console.log(stock)
                   return (
                     <MyStocks
                       key={index}
