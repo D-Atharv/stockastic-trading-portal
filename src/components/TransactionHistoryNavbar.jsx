@@ -1,9 +1,9 @@
 import React from 'react';
 
-const PortfolioNavbar = () => {
+const TransactionHistoryNavbar = () => {
   return(
     <div className="flex flex-row items-center justify-between px-[2%] py-3">
-      <a href="/">
+      <a href="/portfolio">
       <img
         className="w-[90px]"
         src='./back_1.svg' />
@@ -19,4 +19,4 @@ const PortfolioNavbar = () => {
   );
 };
 
-export default PortfolioNavbar;
+export default TransactionHistoryNavbar;
