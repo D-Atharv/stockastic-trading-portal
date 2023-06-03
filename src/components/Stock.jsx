@@ -5,6 +5,8 @@ import axios from 'axios'
 const Stock = (props) => {
   const [currentQuantity, setCurrentQuantity] = useState(0)
 
+  const buyBtn = document.getElementById(`buyBtn-${props.index}`)
+
   const buyStock = async () => {
     await axios
       .post(
@@ -33,11 +35,21 @@ const Stock = (props) => {
         ) // Kevin Jacob.
         setCurrentQuantity(0)
         props.updateCounter()
+        buyBtn.disabled = false
       })
       .catch((error) => {
         // Handle the error
         props.showSnackbar(error.response.data.message, 5000) // TODO: Make it red.
+        buyBtn.disabled = false
       })
+  }
+
+  const handleBuy = () => {
+    buyStock()
+    buyBtn.disabled = true
+    setTimeout(() => {
+      buyBtn.disabled = false
+    }, 5000)
   }
 
   return (
@@ -68,8 +80,9 @@ const Stock = (props) => {
           </div>
           <div>
             <button
-              className='font-montaga py-2 px-5 rounded-xl bg-[#3DB042] w-[100px] mx-1'
-              onClick={buyStock}
+              className='font-montaga py-2 px-5 rounded-xl bg-[#3DB042] w-[100px] mx-1 disabled:opacity-50 disabled:cursor-not-allowed'
+              id={`buyBtn-${props.index}`}
+              onClick={handleBuy}
             >
               BUY
             </button>

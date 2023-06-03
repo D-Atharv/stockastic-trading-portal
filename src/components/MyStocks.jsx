@@ -4,11 +4,21 @@ import CountTracker from './CountTracker'
 
 const MyStocks = (props) => {
   const [currentQuantity, setCurrentQuantity] = useState(0)
+
+  const sellBtn = document.getElementById(`sellBtn-${props.index}`)
+
+  const handleSell = () => {
+    sellStock()
+    sellBtn.disabled = true
+    setTimeout(() => {
+      sellBtn.disabled = false
+    }, 5000)
+  }
+
   const sellStock = async () => {
     await axios
       .post(
-        `${
-          import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL
+        `${import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL
         }/stockastic/transaction/`,
         {
           type: 'sell',
@@ -32,6 +42,7 @@ const MyStocks = (props) => {
         ) // Kevin Jacob.
         setCurrentQuantity(0)
         props.updateCounter()
+        sellBtn.disabled = false
       })
       .catch((error) => {
         // Handle the error
@@ -62,8 +73,9 @@ const MyStocks = (props) => {
           />
         </div>
         <button
-          className='font-montaga py-2 px-5 rounded-xl bg-[#FF2235] w-[100px] mx-1'
-          onClick={sellStock}
+          className='font-montaga py-2 px-5 rounded-xl bg-[#FF2235] w-[100px] mx-1 disabled:opacity-50 disabled:cursor-not-allowed'
+          id={`sellBtn-${props.index}`}
+          onClick={handleSell}
         >
           SELL
         </button>

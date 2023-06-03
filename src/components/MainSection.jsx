@@ -142,6 +142,7 @@ const MainSection = () => {
           <div className='bg-[#FE45RG] px-5 py-5 flex flex-col justify-between'>
             {companies.map((company, index) => (
               <Stock
+                index={index}
                 key={index}
                 company={company}
                 showSnackbar={showSnackbar}

@@ -93,6 +93,7 @@ const MyPortfolio = () => {
                   return (
                     <MyStocks
                       key={index}
+                      index={index}
                       stock={stock}
                       stock_id={stock.company._id}
                       showSnackbar={showSnackbar}
