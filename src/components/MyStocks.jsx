@@ -18,7 +18,8 @@ const MyStocks = (props) => {
   const sellStock = async () => {
     await axios
       .post(
-        `${import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL
+        `${
+          import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL
         }/stockastic/transaction/`,
         {
           type: 'sell',
