@@ -31,55 +31,28 @@ const Stock = (props) => {
           `You bought ${currentQuantity} stock(s) of ${props.company.name}`,
           5000
         ) // Kevin Jacob.
+        props.updateCounter()
       })
       .catch((error) => {
         // Handle the error
-      })
-  }
-
-  const sellStock = async () => {
-    await axios
-      .post(
-        `${
-          import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL
-        }/stockastic/transaction/`,
-        {
-          type: 'sell',
-          company: props.company._id,
-          volume: currentQuantity,
-        },
-        {
-          headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('jwt'),
-          },
-        }
-      )
-      .then((response) => {
-        if (response.data.status.toLowerCase() == 'fail') {
-          return
-        }
-
-        props.showSnackbar(
-          `You sold ${currentQuantity} stock(s) of ${props.company.name}`,
-          5000
-        ) // Kevin Jacob.
-      })
-      .catch((error) => {
-        // Handle the error
+        props.showSnackbar(error.response.data.message, 5000) // TODO: Make it red.
       })
   }
 
   return (
     <div>
       <div className='flex flex-row items-center justify-center bg-[#303030] rounded-3xl text-white font-montaga py-3 my-3'>
-        <div class='grid grid-cols-5 justify-around'>
+        <div className='w-full grid grid-cols-5 gap-x-4 justify-items-stretch justify-between'>
           <div>
-            <div className='flex flex-row items-center justify-center min-w-[10vw]'>
-              <img className='h-[40px] w-[50px]' src='./stockastic_logo.svg' />
-              <p>{props.company.name.slice(0, 10)}</p>
+            <div className='flex flex-row items-center'>
+              <img
+                className='h-[40px] w-[50px] ml-4'
+                src='./stockastic_logo.svg'
+              />
+              <p>{props.company.name.slice(0, 22)}</p>
             </div>
           </div>
-          <div>
+          <div className='ps-10'>
             <p>{props.company.volume}</p>
           </div>
           <div>
@@ -98,12 +71,6 @@ const Stock = (props) => {
               onClick={buyStock}
             >
               BUY
-            </button>
-            <button
-              className='font-montaga py-2 px-5 rounded-xl bg-[#FF2235] w-[100px] mx-1'
-              onClick={sellStock}
-            >
-              SELL
             </button>
           </div>
         </div>

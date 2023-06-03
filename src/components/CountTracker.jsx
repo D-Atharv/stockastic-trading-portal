@@ -6,15 +6,17 @@ const CounterButton = (props) => {
   }
 
   const increaseCount = () => {
+    // TODO: One team cannot buy more than 30% of any one share.
     if (props.currentQuantity < props.volume) {
       props.setCurrentQuantity(props.currentQuantity + 1)
     }
   }
 
   const handleInputChange = (e) => {
-    const newCount = parseInt(e.target.value)
+    let newCount = parseInt(e.target.value)
     if (newCount > props.volume) {
       newCount = props.volume
+      // return
     }
     props.setCurrentQuantity(isNaN(newCount) ? 0 : newCount)
   }

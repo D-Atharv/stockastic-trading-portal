@@ -13,7 +13,7 @@ const Person = (props) => {
   )
 }
 
-const MyTeam = () => {
+const MyTeam = (props) => {
   const [teamName, setTeamName] = useState('')
   const [teamMembers, setTeamMembers] = useState([])
 
@@ -53,7 +53,6 @@ const MyTeam = () => {
           if (status === 'fail') {
             alert(e.data.err)
           } else {
-            console.log(e.data)
             setWalletAmount(e.data.total)
             setWalletChange(e.data.percent)
           }
@@ -65,7 +64,7 @@ const MyTeam = () => {
     getTeam()
     getTotal()
     return
-  }, [])
+  }, [props.sellCounter])
 
   return (
     <div className='bg-[#1E1B1E] rounded-3xl flex flex-col items-center justify-around py-5 font-montaga text-xl text-white'>

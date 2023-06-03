@@ -15,7 +15,11 @@ const MainSection = () => {
 
   const [isLoading, setIsLoading] = useState(true)
 
-  const jwt = localStorage.getItem('jwt')
+  const [buyCounter, setBuyCounter] = useState(0)
+
+  const updateCounter = () => {
+    setBuyCounter(buyCounter + 1)
+  }
 
   const showSnackbar = (message, duration) => {
     var snackbar = document.getElementById('snackbar')
@@ -29,12 +33,31 @@ const MainSection = () => {
   }
 
   useEffect(() => {
-    function checkLogin() {
-      if (jwt === null) {
+    async function checkLogin() {
+      if (localStorage.getItem('jwt') === null) {
         navigate('/SignIn')
+        return
       }
-    }
 
+      await axios
+        .get(`${import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL}/auth/me`, {
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+          },
+        })
+        .then((e) => {
+          return
+        })
+        .catch((e) => {
+          alert('There was some error logging in. Please login again.')
+          localStorage.removeItem('jwt')
+          navigate('/SignIn')
+        })
+    }
+    checkLogin()
+  }, [])
+
+  useEffect(() => {
     async function getStocks() {
       await axios
         .get(
@@ -68,29 +91,35 @@ const MainSection = () => {
         .then((e) => {
           const status = e.data.status
           if (status === 'fail') {
-            alert(e.data.err)
+            alert(e.data.message)
           } else {
             setWalletBal(e.data.team.wallet)
           }
           return
         })
-        .catch((e) => {})
+        .catch((e) => {
+          if (e.response.data.message === 'No team found') {
+            alert(
+              'No team found. Please create or join a team before using the portal.'
+            )
+            setIsLoading(true)
+          }
+        })
     }
 
-    checkLogin()
     getWallet()
     getStocks()
 
     return
-  }, [])
+  }, [buyCounter])
 
   return (
     <div className='mx-10 rounded-3xl my-10 h-full'>
-      <div className='flex flex-row items-center justify-between py-3 font-montaga text-white text-extrabold text-md px-[7%]'>
-        <h1 className='flex-1'>STOCK NAME</h1>
-        <h1 className='flex-1'>VOLUME AVAILABLE</h1>
-        <h1 className='flex-1'>PRICE</h1>
-        <h1 className='flex-1'>Quantity</h1>
+      <div className='w-full grid grid-cols-5 gap-x-4 justify-items-stretch justify-between font-montaga text-white text-extrabold text-md'>
+        <h1 className='class ps-5'>STOCK NAME</h1>
+        <h1 className=''>VOLUME AVAILABLE</h1>
+        <h1 className=''>PRICE</h1>
+        <h1 className=''>Quantity</h1>
         <h1 className='bg-white px-10 py-3 text-black rounded-2xl'>
           Amount Left: <span>{walletBal.toFixed(2)}</span>
         </h1>
@@ -112,7 +141,12 @@ const MainSection = () => {
           </div>
           <div className='bg-[#FE45RG] px-5 py-5 flex flex-col justify-between'>
             {companies.map((company, index) => (
-              <Stock key={index} company={company} showSnackbar={showSnackbar}/>
+              <Stock
+                key={index}
+                company={company}
+                showSnackbar={showSnackbar}
+                // updateCounter={updateCounter}
+              />
             ))}
           </div>
         </>
