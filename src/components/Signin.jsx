@@ -91,10 +91,10 @@ function SignIn() {
           }) => (
             <div className='login flex items-center justify-center md:w-[60vw] w-[90vw] h-[100%]'>
               <div className='form w-full text-center'>
-                <a href='/' className='flex w-fit'>
+                <button className='flex w-fit' onClick={() => navigate("/")}>
                   <img className='w-12' src='stockastic_logo.svg' alt='Logo' />
                   <div className='my-auto text-[#5FBDC8]'>Stockastic</div>
-                </a>
+                </button>
 
                 <form noValidate onSubmit={handleSubmit}>
                   <span className=' w-full block font-[1000] text-2xl mt-[17%] mb-3'>

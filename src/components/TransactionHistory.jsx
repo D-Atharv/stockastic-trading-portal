@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router'
 
 const TransactionHistory = () => {
   const [transactions, setTransactions] = useState([])
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function getAllTransacrtions() {
@@ -35,9 +38,9 @@ const TransactionHistory = () => {
   return (
     <>
       <div className='flex flex-row items-center justify-between px-2 py-3'>
-        <a href='/portfolio'>
+        <button onClick={() => navigate('/portfolio')}>
           <img className='w-20' src='./back_1.svg' alt='Back' />
-        </a>
+        </button>
         <h1 className='font-montaga text-white text-extrabold text-3xl'>
           STOCKASTIC
         </h1>
