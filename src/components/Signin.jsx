@@ -89,15 +89,17 @@ function SignIn() {
             handleBlur,
             handleSubmit,
           }) => (
-            <div className='login flex items-center justify-center md:w-[60vw] w-[90vw] h-[100%]'>
-              <div className='form w-full text-center'>
-                <button className='flex w-fit' onClick={() => navigate('/')}>
-                  <img className='w-12' src='stockastic_logo.svg' alt='Logo' />
-                  <div className='my-auto text-[#5FBDC8]'>Stockastic</div>
+<>
+            <button className='fixed top-10 left-10' onClick={() => navigate('/')}>
+                  <img className='w-22' src='stockastic_logo.svg' alt='Logo' />
                 </button>
+            <div className='login flex items-center justify-center md:w-[40vw] w-[60vw] h-[100%]'>
+            
+              <div className='form w-full text-center'>
+                
 
                 <form noValidate onSubmit={handleSubmit}>
-                  <span className=' w-full block font-[1000] text-2xl mt-[17%] mb-3'>
+                  <span className=' w-full block font-[1000] text-2xl mb-3'>
                     Sign In
                   </span>
                   <span className='block light'>Welcome to Stockastic</span>
@@ -149,17 +151,10 @@ function SignIn() {
                     {signingIn ? 'Signing In...' : 'Sign In'}
                   </button>
                 </form>
-                <a
-                  href='mailto:dreammerchantsvit@gmail.com'
-                  className='md:flex md:absolute md:bottom-4 md:right-4 hidden'
-                >
-                  <img src='gmail-grey.svg' alt='gmail' />
-                  <div className='ms-2 my-auto'>
-                    dreammerchantsvit@gmail.com
-                  </div>
-                </a>
+              
               </div>
             </div>
+            </>
           )}
         </Formik>
         {sucessSnack ? (
