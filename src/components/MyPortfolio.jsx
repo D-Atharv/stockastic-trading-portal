@@ -15,9 +15,12 @@ const MyPortfolio = () => {
     setSellCounter(sellCounter + 1)
   }
 
-  let totalAmount = 0
-
   useEffect(() => {
+    const intervalId = setInterval(() => {
+      console.log('Refreshing data')
+      updateCounter()
+    }, 5000)
+
     async function getMyStocks() {
       await axios
         .get(
@@ -41,12 +44,14 @@ const MyPortfolio = () => {
           return
         })
         .catch((e) => {
-
-        console.log(e)
-      })
+          console.log(e)
+        })
     }
     getMyStocks()
-    return
+    return () => {
+      console.log('Clearing')
+      clearInterval(intervalId)
+    }
   }, [sellCounter])
 
   const showSnackbar = (message, duration) => {
@@ -91,7 +96,8 @@ const MyPortfolio = () => {
               </div>
               {myStocks.map((stock, index) => {
                 if (stock.totalVolume > 0) {
-                  totalAmount += stock.totalVolume * stock.company.price
+                  console.log(stock)
+                  // totalAmount += stock.totalVolume * stock.company.price
                   console.log(stock)
                   return (
                     <MyStocks

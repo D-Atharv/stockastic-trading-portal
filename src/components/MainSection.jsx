@@ -26,7 +26,7 @@ const MainSection = () => {
     snackbar.innerHTML = message
     snackbar.classList.add('visible')
     snackbar.classList.remove('invisible')
-    setTimeout(function() {
+    setTimeout(function () {
       snackbar.classList.remove('visible')
       snackbar.classList.add('invisible')
     }, duration)
@@ -60,6 +60,12 @@ const MainSection = () => {
   }, [])
 
   useEffect(() => {
+    const intervalId = setInterval(() => {
+      console.log('Refreshing data')
+      updateCounter()
+      console.log(buyCounter)
+    }, 5000)
+
     async function getStocks() {
       await axios
         .get(
@@ -81,7 +87,6 @@ const MainSection = () => {
           return
         })
         .catch((e) => {
-
           console.log(e)
         })
     }
@@ -115,7 +120,10 @@ const MainSection = () => {
     getWallet()
     getStocks()
 
-    return
+    return () => {
+      console.log('Clearing')
+      clearInterval(intervalId)
+    }
   }, [buyCounter])
 
   return (

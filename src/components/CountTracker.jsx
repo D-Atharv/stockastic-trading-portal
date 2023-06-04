@@ -31,7 +31,7 @@ const CounterButton = (props) => {
       </button>
       <input
         type='text'
-        className='bg-purple-700 py-1 px-3 text-white text-center w-16 appearance-none focus:outline-none'
+        className='bg-purple-700 py-1 px-3 text-white text-center w-20 appearance-none focus:outline-none'
         value={props.currentQuantity}
         onChange={handleInputChange}
       />
