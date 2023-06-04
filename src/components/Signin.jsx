@@ -132,12 +132,12 @@ function SignIn() {
 
                   {/* Forgot Password */}
                   <div className='justify-end flex'>
-                    <Link
+                    <a
                       className='w-fit mr-[10%] text-sky-500 hover:text-sky-300 mb-[10px]  text-[15px]'
-                      to={'/forgotpassword'}
+                      href='https://stockastic.dreammerchantsvit.com/forgotpassword'
                     >
                       Forgot password?
-                    </Link>
+                    </a>
                   </div>
 
                   {/* Buttons */}

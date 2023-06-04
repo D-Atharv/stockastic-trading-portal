@@ -39,6 +39,14 @@ const Stock = (props) => {
       })
       .catch((error) => {
         // Handle the error
+        if (
+          error.response.data.message ==
+          'Enter all the details type,company,volume,price'
+        ) {
+          props.showSnackbar('Please enter a non-zero quantity.', 5000) // TODO: Make it red.
+          buyBtn.disabled = false
+          return
+        }
         props.showSnackbar(error.response.data.message, 5000) // TODO: Make it red.
         buyBtn.disabled = false
       })
