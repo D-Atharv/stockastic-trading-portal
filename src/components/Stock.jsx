@@ -35,6 +35,8 @@ const Stock = (props) => {
           return
         }
 
+      console.log(props.showSnackbar)
+
         props.showSnackbar(
           `You bought ${currentQuantity} stock(s) of ${props.company.name}`,
           5000

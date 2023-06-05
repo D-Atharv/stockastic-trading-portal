@@ -5,7 +5,6 @@ import axios from 'axios'
 import { useNavigate } from 'react-router'
 
 import Loader from './Loader'
-import { document } from 'postcss'
 
 const MainSection = () => {
   const navigate = useNavigate()
