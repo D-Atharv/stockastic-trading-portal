@@ -35,6 +35,7 @@ const MainSection = () => {
 
   useEffect(() => {
     async function checkLogin() {
+
       if (localStorage.getItem('jwt') === null) {
         navigate('/SignIn')
         return
@@ -111,8 +112,8 @@ const MainSection = () => {
         .catch((e) => {
           if (e.response.data.message === 'No team found') {
             localStorage.removeItem('jwt')
-            navigate('/')
             alert("No team found. Cannot access the portal.")
+            navigate('/SignIn')
             setIsLoading(true)
           }
         })
