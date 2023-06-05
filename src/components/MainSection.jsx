@@ -110,11 +110,9 @@ const MainSection = () => {
         })
         .catch((e) => {
           if (e.response.data.message === 'No team found') {
-            window.localStorage.removeItem("jwt")
-            document.location = "https://tradingportal.dreammerchantsvit.com"
-            alert(
-              'No team found. Please create or join a team before using the portal.'
-            )
+            localStorage.removeItem('jwt')
+            navigate('/')
+            alert("No team found. Cannot access the portal.")
             setIsLoading(true)
           }
         })
