@@ -7,6 +7,12 @@ const Stock = (props) => {
 
   const buyBtn = document.getElementById(`buyBtn-${props.index}`)
 
+  function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+    })
+  }
+
   const buyStock = async () => {
     await axios
       .post(
@@ -70,7 +76,7 @@ const Stock = (props) => {
                 className='h-[40px] w-[50px] ml-4'
                 src='./stockastic_logo.svg'
               />
-              <p>{props.company.name.slice(0, 22)}</p>
+              <p>{toTitleCase(props.company.name.slice(0, 22))}</p>
             </div>
           </div>
           <div className='ps-10'>

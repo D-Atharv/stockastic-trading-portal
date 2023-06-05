@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router'
 
 import Loader from './Loader'
+import { document } from 'postcss'
 
 const MainSection = () => {
   const navigate = useNavigate()
@@ -109,6 +110,8 @@ const MainSection = () => {
         })
         .catch((e) => {
           if (e.response.data.message === 'No team found') {
+            window.localStorage.removeItem("jwt")
+            document.location = "https://tradingportal.dreammerchantsvit.com"
             alert(
               'No team found. Please create or join a team before using the portal.'
             )
