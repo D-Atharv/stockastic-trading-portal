@@ -19,7 +19,7 @@ const MyPortfolio = () => {
     const intervalId = setInterval(() => {
       console.log('Refreshing data')
       updateCounter()
-    }, 5000)
+    }, 60000)
 
     async function getMyStocks() {
       await axios

@@ -65,7 +65,7 @@ const MainSection = () => {
       console.log('Refreshing data')
       updateCounter()
       console.log(buyCounter)
-    }, 5000)
+    }, 60000)
 
     async function getStocks() {
       await axios
