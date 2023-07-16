@@ -18,6 +18,7 @@
 ## Important Links
 - [Stockastic Landing Page](https://stockastic.dreammerchantsvit.com/)
 - [Stockastic Backend Repo](https://github.com/jaynikunjshah/stockastic23-backend/)
+- [Stockastic Portal](https://github.com/jaynikunjshah/stockastic23-frontend)
 
 ## Screenshots
 <p align="center">
