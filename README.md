@@ -1,7 +1,7 @@
 <p align="center"><img src="https://i.ibb.co/jTfpkjG/stockastic-logo.png" title="Dreammerchants-VIT" alt="DreamMerchants-VIT">
 </p>
 
-# Stockastic'23 Portal
+# Stockastic'23 Trading Portal
 
 > <Subtitle>
 > The official trading portal for Stockastic'23
@@ -68,6 +68,8 @@ $ npm run dev
 		<a href = "https://github.com/shantanu1805"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36" alt="GitHub"/></a>
 	</p>
 </td>
+</tr>
+</table>
 
 <p align="center">
 	With ❤️ by <a href="https://dreammerchantsvit.com/ target="_blank">Dream Merchants - VIT</a>
