@@ -69,6 +69,16 @@ $ npm run dev
 		<a href = "https://github.com/shantanu1805"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36" alt="GitHub"/></a>
 	</p>
 </td>
+
+<td>Manjunadha Abhinai
+	<p align="center">
+		<img src = "https://avatars.githubusercontent.com/kmabhinai" width="150" height="150" alt="Jay">
+	</p>
+	<p align="center">
+		<a href = "https://github.com/kmabhinai"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36" alt="GitHub"/></a>
+	</p>
+</td>
+
 </tr>
 </table>
 
