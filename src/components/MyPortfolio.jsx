@@ -24,9 +24,7 @@ const MyPortfolio = () => {
     async function getMyStocks() {
       await axios
         .get(
-          `${
-            import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL
-          }/stockastic/transaction/`,
+          `http://localhost:8000/api/stockastic/transaction/`,
           {
             headers: {
               Authorization: 'Bearer ' + localStorage.getItem('jwt'),

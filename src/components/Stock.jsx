@@ -16,8 +16,7 @@ const Stock = (props) => {
   const buyStock = async () => {
     await axios
       .post(
-        `${
-          import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL
+        `${import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL
         }/stockastic/transaction/`,
         {
           type: 'buy',
@@ -35,7 +34,7 @@ const Stock = (props) => {
           return
         }
 
-      console.log(props.showSnackbar)
+        console.log(props.showSnackbar)
 
         props.showSnackbar(
           `You bought ${currentQuantity} stock(s) of ${props.company.name}`,

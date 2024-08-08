@@ -18,9 +18,7 @@ const MyStocks = (props) => {
   const sellStock = async () => {
     await axios
       .post(
-        `${
-          import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL
-        }/stockastic/transaction/`,
+        `http://localhost:8000/api/stockastic/transaction/`,
         {
           type: 'sell',
           company: props.stock_id,
@@ -86,3 +84,4 @@ const MyStocks = (props) => {
 }
 
 export default MyStocks
+

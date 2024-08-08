@@ -16,14 +16,13 @@ const Person = (props) => {
 const MyTeam = (props) => {
   const [teamName, setTeamName] = useState('')
   const [teamMembers, setTeamMembers] = useState([])
-
   const [walletAmount, setWalletAmount] = useState(0)
   const [walletChange, setWalletChange] = useState(0)
 
   useEffect(() => {
     async function getTeam() {
       await axios
-        .get(`${import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL}/team`, {
+        .get(`http:localhost:8000/api/team`, {
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('jwt'),
           },
@@ -38,16 +37,19 @@ const MyTeam = (props) => {
           }
           return
         })
-        .catch((e) => {})
+        .catch((e) => { })
     }
 
     async function getTotal() {
       await axios
-        .get(`${import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL}/total`, {
-          headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('jwt'),
-          },
-        })
+        .get(
+          // `${import.meta.env.VITE_NEXT_PUBLIC_SERVER_URL}/total`, 
+          `http://locahost:8000/api/total`,
+          {
+            headers: {
+              Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+            },
+          })
         .then((e) => {
           const status = e.data.status
           if (status === 'fail') {
@@ -58,7 +60,7 @@ const MyTeam = (props) => {
           }
           return
         })
-        .catch((e) => {})
+        .catch((e) => { })
     }
 
     getTeam()
@@ -90,19 +92,17 @@ const MyTeam = (props) => {
           </div>
 
           <div
-            className={`flex flex-row items-center justify-around mx-2 ${
-              walletChange == 0
-                ? 'bg=[#303030]'
-                : walletChange > 0
+            className={`flex flex-row items-center justify-around mx-2 ${walletChange == 0
+              ? 'bg=[#303030]'
+              : walletChange > 0
                 ? 'bg-[#3DB042]'
                 : 'bg-[#FF2235]'
-            } rounded-xl px-4 py-3`}
+              } rounded-xl px-4 py-3`}
           >
             <img
               src='./arrow.svg'
-              className={`w-1/3 transition-transform ${
-                walletChange >= 0 ? 'rotate-180' : ''
-              } ${walletChange == 0 ? 'hidden' : ''}`}
+              className={`w-1/3 transition-transform ${walletChange >= 0 ? 'rotate-180' : ''
+                } ${walletChange == 0 ? 'hidden' : ''}`}
             />
             <span className='px-1'>{walletChange.toFixed(4)}</span>
           </div>
@@ -112,4 +112,4 @@ const MyTeam = (props) => {
   )
 }
 
-export default MyTeam
+export default MyTeam;
